@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package View;
-
+import Model.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -11,8 +11,9 @@ import javax.swing.JOptionPane;
  * @author KaueR
  */
 public class FormLogin extends javax.swing.JFrame {
-    FormCadastro fc = new FormCadastro();
 
+    FormCadastro cadastro = new FormCadastro();    
+    
     /**
      * Creates new form FormLogin
      */
@@ -42,7 +43,6 @@ public class FormLogin extends javax.swing.JFrame {
 
         btnCadastrar.setBackground(new java.awt.Color(204, 204, 204));
         btnCadastrar.setText("Cadastrar");
-        btnCadastrar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCadastrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnCadastrarMouseClicked(evt);
@@ -56,7 +56,6 @@ public class FormLogin extends javax.swing.JFrame {
 
         btnLogin.setBackground(new java.awt.Color(204, 204, 204));
         btnLogin.setText("Login");
-        btnLogin.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnLogin.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnLoginMouseClicked(evt);
@@ -78,9 +77,12 @@ public class FormLogin extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(textLogin, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                    .addComponent(textSenha)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(textSenha))
                 .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(48, 48, 48))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -118,12 +120,11 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
-  String loginEntrada = this.textLogin.getText();
+        String loginEntrada = this.textLogin.getText();
         String senhaEntrada = this.textSenha.getText();
         
-        FormCadastro fCadastro = new FormCadastro();
         
-        if(! loginEntrada.equals(fc.usuario) || ! senhaEntrada.equals(fc.senha)){
+        if(! loginEntrada.equals(cadastro.usuario) || ! senhaEntrada.equals(cadastro.senha)){
             JOptionPane.showMessageDialog(null, "Login ou Senha Invalidos", "Erro de Operação",JOptionPane.WARNING_MESSAGE);
             
             this.textLogin.requestFocus();

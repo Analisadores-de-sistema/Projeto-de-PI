@@ -7,6 +7,8 @@ package Model;
 
 public class Funcionarios {
     private int idFuncionarios;
+    private String senha;
+    private String usuario;
     private String nome;
     private String cpf;
     private String telefone;
@@ -74,6 +76,20 @@ public class Funcionarios {
     public void setTurno(String turno) {
         this.turno = turno;
     }
-    
-    
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
 }

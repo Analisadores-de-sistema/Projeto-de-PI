@@ -4,6 +4,7 @@
  */
 package View;
 
+import Model.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -12,16 +13,17 @@ import javax.swing.table.DefaultTableModel;
  * @author KaueR
  */
 public class FormCadastro extends javax.swing.JFrame {
-    String usuario;
-    String senha;
-    String email;
+    Funcionarios func = new Funcionarios();
+    String usuario = "admin";
+    String senha = "admin";
+
     /**
      * Creates new form FormClientes
      */
     public FormCadastro() {
         initComponents();
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -148,15 +150,26 @@ public class FormCadastro extends javax.swing.JFrame {
     }//GEN-LAST:event_textUsuárioActionPerformed
 
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
-        usuario = this.textUsuário.getText();
-        email = this.textEmail.getText();
-        senha = this.textSenha.getText();
+    
+        func.setUsuario(this.textUsuário.getText());
+        func.setEmail(this.textEmail.getText());
+        func.setSenha(this.textSenha.getText());
         
-        JOptionPane.showMessageDialog(null,"Usuário Caadastrado");
+        
+        
+        
+        
+        
+        
+        JOptionPane.showMessageDialog(null,"Usuário Cadastrado");
         
         FormLogin obj = new FormLogin();
         obj.setVisible(true);
-        this.setVisible(false);    
+        this.setVisible(false);
+        
+        usuario = func.getUsuario();
+        senha = func.getSenha();
+       
         return;
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
@@ -195,7 +208,7 @@ public class FormCadastro extends javax.swing.JFrame {
             }
         });
     }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cadastro;
     private javax.swing.JButton btnCadastrar;
