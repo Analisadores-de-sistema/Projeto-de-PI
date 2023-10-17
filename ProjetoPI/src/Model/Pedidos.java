@@ -9,7 +9,7 @@ public class Pedidos {
     private int idPedidos;
     private int valorCompra;
     private String dataCompra;
-    private Cliente cliente;
+    private Usuario cliente;
     private Loja loja;
 
     public int getIdPedidos() {
@@ -36,7 +36,7 @@ public class Pedidos {
         this.dataCompra = dataCompra;
     }
 
-    public Cliente getCliente() {
+    public Usuario getCliente() {
         return cliente;
     }
 
