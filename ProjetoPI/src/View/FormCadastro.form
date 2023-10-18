@@ -95,22 +95,20 @@
                               <Component id="jLabel4" alignment="0" min="-2" pref="37" max="-2" attributes="0"/>
                               <Component id="textCPF" alignment="0" min="-2" pref="357" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="57" max="32767" attributes="0"/>
+                          <EmptySpace pref="76" max="32767" attributes="0"/>
                           <Component id="btnCadastrar" min="-2" pref="121" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="textSenha" min="-2" pref="191" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnCriarTabela" min="-2" pref="145" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="32767" attributes="0"/>
                   <Component id="Cadastro" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="164" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -139,11 +137,8 @@
                       <Component id="btnCadastrar" pref="116" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="textSenha" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="btnCriarTabela" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="textSenha" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -157,11 +152,8 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="CADASTRO"/>
+            <Property name="text" type="java.lang.String" value="CADASTRO USUARIO"/>
           </Properties>
-          <AccessibilityProperties>
-            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="CADASTRO"/>
-          </AccessibilityProperties>
         </Component>
         <Component class="javax.swing.JTextField" name="textEmail">
           <Events>
@@ -221,14 +213,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textCPF">
-        </Component>
-        <Component class="javax.swing.JButton" name="btnCriarTabela">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Cadastrar Tabela"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCriarTabelaMouseClicked"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -6,6 +6,7 @@ package View;
 
 import Controller.UsuarioDao;
 import Model.*;
+import java.util.HashSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -47,7 +48,6 @@ public class FormCadastro extends javax.swing.JFrame {
         btnCadastrar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         textCPF = new javax.swing.JTextField();
-        btnCriarTabela = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
@@ -70,7 +70,7 @@ public class FormCadastro extends javax.swing.JFrame {
 
         Cadastro.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         Cadastro.setForeground(new java.awt.Color(255, 255, 255));
-        Cadastro.setText("CADASTRO");
+        Cadastro.setText("CADASTRO USUARIO");
 
         textEmail.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,13 +104,6 @@ public class FormCadastro extends javax.swing.JFrame {
 
         jLabel4.setText("CPF");
 
-        btnCriarTabela.setText("Cadastrar Tabela");
-        btnCriarTabela.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnCriarTabelaMouseClicked(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -130,18 +123,16 @@ public class FormCadastro extends javax.swing.JFrame {
                             .addComponent(textEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(textCPF, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 76, Short.MAX_VALUE)
                         .addComponent(btnCadastrar, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnCriarTabela, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(Cadastro)
-                .addGap(164, 164, 164))
+                .addGap(69, 69, 69))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -166,13 +157,9 @@ public class FormCadastro extends javax.swing.JFrame {
                         .addComponent(jLabel3))
                     .addComponent(btnCadastrar, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCriarTabela))
-                .addGap(33, 33, 33))
+                .addComponent(textSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
-
-        Cadastro.getAccessibleContext().setAccessibleName("CADASTRO");
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -209,19 +196,25 @@ public class FormCadastro extends javax.swing.JFrame {
 
     private void btnCadastrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrarMouseClicked
 
+         // Criar banco
+        UsuarioDao u = new UsuarioDao();
+        u.criarBanco();
+        
+        // Preencher usuário
         func.setUsuario(this.textUsuário.getText());
         func.setEmail(this.textEmail.getText());
         func.setSenha(this.textSenha.getText());
+        func.setCpf(this.textCPF.getText());
+        
 
         JOptionPane.showMessageDialog(null,"Usuário Cadastrado");
 
-        FormLogin obj = new FormLogin();
-        obj.setVisible(true);
+        FormMenu objMenu = new FormMenu();
+        objMenu.setVisible(true);
         this.setVisible(false);
 
         usuario = func.getUsuario();
         senha = func.getSenha();
-
         return;
     }//GEN-LAST:event_btnCadastrarMouseClicked
 
@@ -232,13 +225,6 @@ public class FormCadastro extends javax.swing.JFrame {
     private void textEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textEmailActionPerformed
-
-    private void btnCriarTabelaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCriarTabelaMouseClicked
-        // TODO add your handling code here:
-        
-        UsuarioDao u = new UsuarioDao();
-        u.criarBanco(); // cria todas as tabelas
-    }//GEN-LAST:event_btnCriarTabelaMouseClicked
 
     /**
      * @param args the command line arguments
@@ -279,7 +265,6 @@ public class FormCadastro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Cadastro;
     private javax.swing.JButton btnCadastrar;
-    private javax.swing.JButton btnCriarTabela;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
