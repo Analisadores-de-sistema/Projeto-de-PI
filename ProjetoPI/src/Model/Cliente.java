@@ -4,7 +4,6 @@
  */
 package Model;
 
-
 public class Cliente {
     private int idCliente;
     private String nome;
@@ -14,11 +13,11 @@ public class Cliente {
     private String cpf;
     private String senha;
 
-    public int getID_Cliente() {
+    public int getIdCliente() {
         return idCliente;
     }
 
-    public void setID_Cliente(int ID_Cliente) {
+    public void setIdCliente(int ID_Cliente) {
         this.idCliente = ID_Cliente;
     }
 

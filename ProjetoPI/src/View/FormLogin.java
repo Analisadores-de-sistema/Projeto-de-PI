@@ -45,8 +45,8 @@ public class FormLogin extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 204));
 
-        jLabel1.setFont(new java.awt.Font("Algerian", 1, 36)); // NOI18N
-        jLabel1.setText("MidiaGame login");
+        jLabel1.setFont(new java.awt.Font("Berlin Sans FB", 1, 36)); // NOI18N
+        jLabel1.setText("MidiaGame");
 
         btnCadastrar1.setBackground(new java.awt.Color(204, 204, 204));
         btnCadastrar1.setText("Cadastrar");
@@ -84,10 +84,6 @@ public class FormLogin extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -101,6 +97,10 @@ public class FormLogin extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(72, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(119, 119, 119))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,7 +138,7 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCadastrar1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCadastrar1MouseClicked
-     FormCli objCli = new FormCli();
+        FormCadastro objCli = new FormCadastro();
                 objCli.setVisible(true);
                 this.setVisible(false);    // TODO add your handling code here:
     }//GEN-LAST:event_btnCadastrar1MouseClicked
@@ -161,9 +161,9 @@ public class FormLogin extends javax.swing.JFrame {
             if (resul.next() || (login.equals("admin") 
                     && senha.equals("1234")))
             {
-                FormCli objCli = new FormCli();
-                objCli.setVisible(true);
-                objCli.setTitle("usuário logado - " + login );
+                FormMenu objMenu = new FormMenu();
+                objMenu.setVisible(true);
+                objMenu.setTitle("usuário logado - " + login );
                 this.setVisible(false);
             }
             else { JOptionPane.showMessageDialog(null,

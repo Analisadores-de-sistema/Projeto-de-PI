@@ -7,19 +7,18 @@ package Model;
 public class Jogos {
     private int idJogo;
     private String nome;
-    private int idadeClassificada;
-    private String anoLançamento;
+    private String idadeClassificada;
     private String produtora;
     private String plataforma;
-    private Loja loja;
-    private TipoGenero tg;
+    private String tg;
 
-     public Loja getLoja() {
-       return loja;
+
+    public String getTg() {
+        return tg;
     }
 
-    public TipoGenero getTg() {
-        return tg;
+    public void setTg(String tg) {
+        this.tg = tg;
     }
       
     public int getIdJogo() {
@@ -39,20 +38,12 @@ public class Jogos {
         this.nome = nome;
     }
 
-    public int getIdadeClassificada() {
+    public String getIdadeClassificada() {
         return idadeClassificada;
     }
 
-    public void setIdadeClassificada(int idadeClassificada) {
+    public void setIdadeClassificada(String idadeClassificada) {
         this.idadeClassificada = idadeClassificada;
-    }
-
-    public String getAnoLançamento() {
-        return anoLançamento;
-    }
-
-    public void setAnoLançamento(String anoLançamento) {
-        this.anoLançamento = anoLançamento;
     }
 
     public String getProdutora() {
