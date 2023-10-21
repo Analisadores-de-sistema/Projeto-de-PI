@@ -158,8 +158,8 @@ public class FormMenu extends javax.swing.JFrame {
     private void btnJogosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnJogosMouseClicked
         // TODO add your handling code here:
         
-        FormProduto objProd = new FormProduto();
-        objProd.setVisible(true);
+        FormJogos objJog = new FormJogos();
+        objJog.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btnJogosMouseClicked
 
@@ -181,9 +181,9 @@ public class FormMenu extends javax.swing.JFrame {
 
     private void btnUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnUsuariosMouseClicked
         // TODO add your handling code here:
-        FormCadastro objCad = new FormCadastro();
-        objCad.setVisible(true);
-        this.setVisible(false);
+        FormUsu objUsu = new FormUsu();
+        objUsu.setVisible(true);
+        this.setVisible(false);        
     }//GEN-LAST:event_btnUsuariosMouseClicked
 
     private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed

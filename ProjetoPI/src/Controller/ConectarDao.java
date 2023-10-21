@@ -1,39 +1,89 @@
 package Controller;
 
-import java.sql.DriverManager; // Driver para abrir Conexão
-import java.sql.SQLException; // Tratamento de Erros SQL
-import java.sql.Connection; // Armazena a Conexão Aberta
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.*;
-import java.sql.*;
+import java.sql.PreparedStatement;
 
 public class ConectarDao {
 
     public Connection mycon = null;
     public String sql = null;
-    Connection con;
 
     public ConectarDao() {
-        String strcon = "jdbc:mysql://localhost:3306/midiagame";
-        try { // Código que abre e armazena a 
-            con = DriverManager.getConnection(
-                    strcon, "root",
-                    "");
-        } catch (SQLException err) {
-            JOptionPane.showMessageDialog(null, "Erro de Conexão com o"
-                    + "MySQL ...\n" + err.getMessage());
+        String strcon = "jdbc:mysql://localhost:3306/midiagame";//cria a string de conexão ao servidor xaamp 
+        try {
+
+            mycon = DriverManager.getConnection(strcon, "root", "");
+            this.criarBanco();
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Conexão com Mysql não realizada!\n" + ex);
         }
     }
 
     public void criarBanco() {
-        sql = "CREATE TABLE IF NOT EXISTS USUARIO ("
-                + "idUsuario int not null, "
-                + "nome varchar(50) not null, "
-                + "telefone varchar (50) not null, "
-                + "endereço varchar (100) not null, "
-                + "email varchar (50) not null, "
+        sql = " CREATE TABLE IF NOT EXISTS NIVEIS ("
+                + "idNivel int not null AUTO_INCREMENT, "
+                + "desNivel varchar(30) not null, "
+                + "primary key (idNivel) ) ";
+
+        try {
+            PreparedStatement ps = mycon.prepareStatement(sql);
+            ps.execute();
+            ps.close();
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar table Nivel!\n" + err.getMessage());
+        }
+
+        sql = " CREATE TABLE IF NOT EXISTS USUARIOS ("
                 + "cpf varchar (12) not null, "
-                + "senha varchar (20) not null, "
-                + "PRIMARY KEY (idUsuario) )";
+                + "nome varchar(50) not null, "
+                + "email varchar(50) not null, "
+                + "celular varchar(20) not null,"
+                + "idNivel int not null, "
+                + "senha varchar(20) not null,  "
+                + "primary key (cpf) )";
+        try {
+            PreparedStatement ps = mycon.prepareStatement(sql);
+            ps.execute();
+            ps.close();
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar tabela Usuarios \n" + err.getMessage());
+        }
+
+        sql = " CREATE TABLE IF NOT EXISTS CLIENTES ("
+                + "cpf varchar (12) not null, "
+                + "nome varchar(50) not null, "
+                + "email varchar(50) not null, "
+                + "celular varchar(20) not null,"
+                + "idNivel int not null, "
+                + "senha varchar(20) not null,  "
+                + "primary key (cpf) )";
+        try {
+            PreparedStatement ps = mycon.prepareStatement(sql);
+            ps.execute();
+            ps.close();
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar tabela Clientes \n" + err.getMessage());
+        }
+
+        sql = " CREATE TABLE IF NOT EXISTS JOGOS ("
+                + "idJogo int not null, "
+                + "nome varchar(50) not null, "
+                + "idade_Classificada varchar(50) not null, "
+                + "produtora varchar(20) not null,"
+                + "tg varchar(50) not null,"
+                + "primary key (idJogo) )";
+        try {
+            PreparedStatement ps = mycon.prepareStatement(sql);
+            ps.execute();
+            ps.close();
+        } catch (SQLException err) {
+            JOptionPane.showMessageDialog(null, "Erro ao criar tabela Clientes \n" + err.getMessage());
+        }
+
     }
+
 }

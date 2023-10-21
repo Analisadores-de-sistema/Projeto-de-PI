@@ -13,12 +13,12 @@ import java.sql.SQLException;
 import javax.swing.JOptionPane;
 import java.sql.PreparedStatement;
 
-public class FormCli extends javax.swing.JFrame {
+public class FormUsu extends javax.swing.JFrame {
 
     /**
      * Creates new form FormCli
      */
-    public FormCli() {
+    public FormUsu() {
         initComponents();
     }
 
@@ -86,7 +86,7 @@ public class FormCli extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setBackground(new java.awt.Color(0, 146, 114));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         textCPF.setBorder(javax.swing.BorderFactory.createTitledBorder("CPF:"));
@@ -140,7 +140,7 @@ public class FormCli extends javax.swing.JFrame {
         titulo.setFont(new java.awt.Font("Arial Black", 1, 36)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        titulo.setText("CADASTRO DE CLIENTES");
+        titulo.setText("CADASTRO DE USUARIOS");
 
         btnSair.setText("SAIR");
         btnSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -287,6 +287,9 @@ public class FormCli extends javax.swing.JFrame {
         
         DefaultComboBoxModel mymodel = (DefaultComboBoxModel) this.cmbID.getModel();
         mymodel.removeAllElements(); // remove todos os elementos do combobox
+        mymodel.addElement(""); // adiciona o primeiro elemento vazio
+        mymodel.addElement("Operador"); // adiciona o item operador
+        mymodel.addElement("Gerente"); // adiciona o item gerente
         mymodel.addElement("Cliente"); // adiciona o item cliente
         this.carregar_usuarios(); // chama o método carregar_usuarios para
         //preencher o jtable
@@ -357,18 +360,14 @@ public class FormCli extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormCli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormUsu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormCli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormUsu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormCli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormUsu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormCli.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(FormUsu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -377,7 +376,7 @@ public class FormCli extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormCli().setVisible(true);
+                new FormUsu().setVisible(true);
             }
         });
     }

@@ -1,24 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package View;
-import Controller.*;
-import Model.*;
+
+
+
+import Controller.UsuarioDao;
 import javax.swing.JOptionPane;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-/**
- *
- * @author KaueR
- */
-public class FormLogin extends javax.swing.JFrame {
 
-    FormCadastro cadastro = new FormCadastro();    
-    
+public class FormLogin extends javax.swing.JFrame {    
     /**
      * Creates new form FormLogin
      */
+    
     public FormLogin() {
         initComponents();
     }
@@ -124,27 +119,40 @@ public class FormLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoginActionPerformed
 
     private void btnLoginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnLoginMouseClicked
+        
         String login = textLogin.getText();
         String senha = textSenha.getText();
+        UsuarioDao u1 = new UsuarioDao();
+        String nivel;
         
-        UsuarioDao u = new UsuarioDao();
+        try {
+                
+                ResultSet resul = u1.validarLogin(login, senha);
+                        
+                if ( resul.next() || ( login.equals("admin") && senha.equals("1234"))   )
+                
+                {
+                    FormMenu objMenu  = new FormMenu();
+                    objMenu.setVisible(true);
+                    if (login.equals("admin")) nivel = "Administrador";
+                    else nivel = resul.getString("nivel");
+                    objMenu.setTitle("Usuário Logado - " + login + "  ("+nivel+") " );
+                    this.setVisible(false);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,
+                "Ususário ou Senha Inválidos!", "Usuário ou Senha Inválidos!",
+                JOptionPane.WARNING_MESSAGE);
+                   textLogin.grabFocus();
+                }
+                
+                
+                }
+        catch (SQLException err) {
+            JOptionPane.showMessageDialog(null,err.getMessage() );
         
-        try {ResultSet resul = u.validarLogin(login, senha);
-            if (resul.next() || (login.equals("admin") 
-                    && senha.equals("1234")))
-            {
-                FormMenu objMenu = new FormMenu();
-                objMenu.setVisible(true);
-                objMenu.setTitle("usuário logado - " + login );
-                this.setVisible(false);
-            }
-            else { JOptionPane.showMessageDialog(null,
-                    "Usuario ou Senha Invalidos!", "Erro de Operação",
-                    JOptionPane.WARNING_MESSAGE);}
         }
-         catch (SQLException err){
-                    JOptionPane.showMessageDialog(null, err.getMessage());
-                    }
     }//GEN-LAST:event_btnLoginMouseClicked
 
     /**
